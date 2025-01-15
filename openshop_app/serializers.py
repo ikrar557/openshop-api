@@ -8,7 +8,7 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Product
         fields = ['id', 'name', 'shop', 'price', 'sku', 'description', 'location',
-                  'discount', 'category', 'stock', 'is_available', 'picture', 'is_deleted', '_links']
+                  'discount', 'category', 'stock', 'is_available', 'picture', 'is_delete', '_links']
 
     def get__links(self, obj):
         request = self.context.get('request')
@@ -29,6 +29,12 @@ class ProductSerializer(serializers.HyperlinkedModelSerializer):
                 "rel": "self",
                 "href": reverse('product-detail', kwargs={'pk': obj.pk}, request=request),
                 "action": "PUT",
+                "types": ["application/json"]
+            },
+            {
+                "rel": "self",
+                "href": reverse('product-detail', kwargs={'pk': obj.pk}, request=request),
+                "action": "DELETE",
                 "types": ["application/json"]
             }
         ]

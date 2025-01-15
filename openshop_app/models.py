@@ -13,5 +13,5 @@ class Product(models.Model):
     category = models.CharField(max_length=100)
     stock = models.PositiveIntegerField()
     is_available = models.BooleanField(default=True)
-    is_deleted = models.BooleanField(default=False)
+    is_delete = models.BooleanField(default=False)
     picture = models.URLField(max_length=500)
